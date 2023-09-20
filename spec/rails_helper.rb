@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'simplecov'
-require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
-SimpleCov.formatter = SimpleCovCustomFormatter
-SimpleCov.start
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
