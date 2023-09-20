@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
-require_relative './spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
-SimpleCov.formatter = SimpleCovCustomFormatter if ENV.fetch("CI") { false }
+require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
+SimpleCov.formatter = SimpleCovCustomFormatter if ENV.fetch('CI', false)
 SimpleCov.start 'rails' do
-  add_filter '/spec/' 
+  add_filter '/spec/'
   add_filter '/app/channels/application_cable/connection'
   add_filter 'app/channels/application_cable/channel'
   add_filter 'app/jobs/application_job'
   add_filter 'app/mailers/application_mailer'
-  #add_filter 'app/models/application_record'
+  # add_filter 'app/models/application_record'
 end
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -42,7 +44,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join('spec/fixtures').to_s
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
