@@ -43,9 +43,7 @@ jobs:
       - name: Check tests coverage
         run: |
           coverage=$(cat .coverage.txt)
-          echo $coverage
           if [ $coverage == 100.0 ];then
-            echo "passing"
             exit 0
           else
             echo "$coverage is lower than 100"
