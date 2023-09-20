@@ -11,7 +11,7 @@ RSpec.describe 'Roots' do
     end
 
     it 'returns a JSON response with the text "Hello"', :aggregate_failures do
-      pending 'testing github'
+      skip 'testing github'
       expect(response).to have_http_status(:ok)
       expect(response.content_type).to eq('application/json; charset=utf-8')
       expect(parsed_response).to eq({ 'text' => 'Hello' })
