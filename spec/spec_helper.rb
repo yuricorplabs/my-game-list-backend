@@ -3,7 +3,7 @@
 require 'simplecov'
 require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
 SimpleCov.formatter = SimpleCovCustomFormatter if ENV.fetch('CI', false)
-SimpleCov.start do 
+SimpleCov.start do
   add_filter '/spec/'
 end
 
