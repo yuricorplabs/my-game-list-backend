@@ -52,3 +52,8 @@ gem "faker", "~> 3.2", :groups => [:development, :test]
 gem "factory_bot", "~> 6.3", :groups => [:development, :test]
 
 gem "rspec-rails", "~> 6.0", :group => :test
+
+gem "rubocop-rails", "~> 2.21", :group => :development
+
+gem "rubocop-factory_bot", "~> 2.24", :group => :development
+gem "rubocop-rspec", "~> 2.24", :group => :development
