@@ -25,6 +25,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      CI: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,7 +39,16 @@ jobs:
         run: bin/rails db:schema:load
       # Add or replace test runners here
       - name: Run tests
-        run: bunlde exec rspec
+        run: bundle exec rspec
+      - name: Check tests coverage
+        run: |
+          coverage=$(cat .coverage.txt)
+          if [ $coverage == 100.0 ];then
+            exit 0
+          else
+            echo "$coverage is lower than 100"
+            exit 1
+          fi
 
   lint:
     runs-on: ubuntu-latest
@@ -51,8 +61,8 @@ jobs:
           bundler-cache: true
       # Add or replace any other lints here
       - name: Security audit dependencies
-        run: bin/bundler-audit --update
+        run: bundle exec bundler-audit --update
       - name: Security audit application code
-        run: bin/brakeman -q -w2
+        run: bundle exec brakeman -q -w2
       - name: Lint Ruby files
-        run: bin/rubocop --parallel
+        run: bundle exec rubocop --parallel
