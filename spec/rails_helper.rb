@@ -1,4 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
+require_relative './spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
+SimpleCov.formatter = SimpleCovCustomFormatter if ENV.fetch("CI") { false }
+SimpleCov.start 'rails' do
+  add_filter '/spec/' 
+  add_filter '/app/channels/application_cable/connection'
+  add_filter 'app/channels/application_cable/channel'
+  add_filter 'app/jobs/application_job'
+  add_filter 'app/mailers/application_mailer'
+  #add_filter 'app/models/application_record'
+end
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
