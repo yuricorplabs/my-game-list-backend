@@ -4,14 +4,7 @@
 require 'simplecov'
 require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
 SimpleCov.formatter = SimpleCovCustomFormatter
-SimpleCov.start 'rails' do
-  add_filter '/spec/'
-  add_filter '/app/channels/application_cable/connection'
-  add_filter 'app/channels/application_cable/channel'
-  add_filter 'app/jobs/application_job'
-  add_filter 'app/mailers/application_mailer'
-  # add_filter 'app/models/application_record'
-end
+SimpleCov.start
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
