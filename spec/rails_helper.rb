@@ -3,7 +3,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
 require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
-SimpleCov.formatter = SimpleCovCustomFormatter if ENV.fetch('CI', false)
+SimpleCov.formatter = SimpleCovCustomFormatter
 SimpleCov.start 'rails' do
   add_filter '/spec/'
   add_filter '/app/channels/application_cable/connection'
