@@ -44,10 +44,10 @@ jobs:
         run: |
           coverage=$(cat .coverage.txt)
           if [ $coverage == 100.0 ];then
-            echo 0
+            exit 0
           else
             echo "$coverage is lower than 100"
-            echo 1
+            exit 1
           fi
 
   lint:
