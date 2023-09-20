@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'simplecov'
 require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
 SimpleCov.formatter = SimpleCovCustomFormatter
