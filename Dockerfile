@@ -16,10 +16,7 @@ RUN bundle exec rake app:update:bin
 # Copy the rest of the application code to the container
 #COPY . .
 
-# Expose port 3000 for the Rails application
-ARG DEFAULT_PORT 3000
-
-EXPOSE ${DEFAULT_PORT}
+EXPOSE 3000
 
 # Start the Rails application
 CMD [ "rails", "server", "-b", "0.0.0.0"]
