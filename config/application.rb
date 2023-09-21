@@ -20,7 +20,7 @@ require 'action_cable/engine'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module MySpotify
+module MyGameList
   # Base Class
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -38,5 +38,8 @@ module MySpotify
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
   end
 end
