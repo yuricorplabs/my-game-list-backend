@@ -62,3 +62,5 @@ gem 'bundler-audit', '~> 0.9.1', group: :development
 gem 'brakeman', '~> 6.0', group: :development
 
 gem 'simplecov', '~> 0.22.0', group: :test, require: false
+
+gem "rack-cors", "~> 2.0"
