@@ -16,5 +16,13 @@ RSpec.describe 'Users::Registrations' do
       expect(response.headers['Authorization']).to match(/^Bearer .*/)
       expect(response_data['name']).to eq(user_params[:name])
     end
+
+    context 'without password' do
+      let(:user_params) { { email: 'sample@email.com' } }
+
+      it 'responds with error' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
   end
 end
