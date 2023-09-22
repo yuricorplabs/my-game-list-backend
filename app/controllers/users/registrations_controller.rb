@@ -3,6 +3,7 @@
 module Users
   # Registration controller for users
   class RegistrationsController < Devise::RegistrationsController
+    include RackSessionFix
     respond_to :json
 
     private
