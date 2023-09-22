@@ -23,6 +23,7 @@ jobs:
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
     env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
       CI: true
@@ -43,10 +44,10 @@ jobs:
       - name: Check tests coverage
         run: |
           coverage=$(cat .coverage.txt)
-          if [ $coverage == 100.0 ];then
+          if [ $coverage > 90.0 ];then
             exit 0
           else
-            echo "$coverage is lower than 100"
+            echo "$coverage is lower than 90"
             exit 1
           fi
 

@@ -102,3 +102,9 @@ yarn-debug.log*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 .DS_Store
+
+/config/credentials/test.key
+
+/config/credentials/production.key
+
+/config/credentials/development.key
