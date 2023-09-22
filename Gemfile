@@ -47,7 +47,7 @@ group :development do
 end
 
 gem 'byebug', '~> 11.1', groups: %i[development test]
-gem 'factory_bot', '~> 6.3', groups: %i[development test]
+gem 'factory_bot_rails', '~> 6.2', groups: %i[development test]
 gem 'faker', '~> 3.2', groups: %i[development test]
 
 gem 'rspec-rails', '~> 6.0', group: :test
@@ -68,3 +68,6 @@ gem 'rack-cors', '~> 2.0'
 gem 'devise', '~> 4.9'
 gem 'devise-jwt', '~> 0.11.0'
 gem 'jsonapi-serializer', '~> 2.2'
+
+
+gem "database_cleaner", "~> 2.0", group: :test

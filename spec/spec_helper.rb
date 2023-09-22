@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require_relative 'spec_helpers/simplecov_custom_formatter' # Adjust the path as needed
+require_relative 'support/simplecov_custom_formatter' # Adjust the path as needed
 SimpleCov.formatter = SimpleCovCustomFormatter if ENV.fetch('CI', false)
 SimpleCov.start do
   add_filter '/spec/'
@@ -23,6 +23,17 @@ end
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start # usually this is called in setup of a test
+  end
+
+  config.around do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
