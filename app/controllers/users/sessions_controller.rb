@@ -8,7 +8,7 @@ module Users
     private
 
     def respond_with(current_user, _opts = {})
-      response.set_header('expires', (Time.now + 1.hour).to_i)
+      response.set_header('expires', 1.hour.from_now.to_i)
       render json: {
         status: { code: 200, message: 'Logged in sucessfully.' },
         data: UserSerializer.new(current_user).serializable_hash.dig(:data, :attributes)
