@@ -9,8 +9,14 @@
 #
 # See https://docs.rubocop.org/rubocop/configuration
 AllCops:
-    NewCops: enable
+  NewCops: enable
 require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-factory_bot
+Metrics/BlockLength:
+  Exclude: 
+    - 'db/**/*'
+Style/Documentation:
+  Exclude: 
+    - 'db/**/*'
