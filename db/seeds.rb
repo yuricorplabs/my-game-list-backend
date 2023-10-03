@@ -7,6 +7,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first
+if Rails.env.development?
+  require 'sidekiq/testing'
+  Sidekiq::Testing.inline!
+end
+
 User.destroy_all
 Publisher.destroy_all
 

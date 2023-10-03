@@ -12,8 +12,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_231_002_205_305) do
+ActiveRecord::Schema[7.0].define(version: 20_231_003_171_020) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension 'pg_trgm'
   enable_extension 'plpgsql'
 
   create_table 'games', force: :cascade do |t|
@@ -30,6 +31,14 @@ ActiveRecord::Schema[7.0].define(version: 20_231_002_205_305) do
     t.string 'name'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'searchables', force: :cascade do |t|
+    t.string 'search_term'
+    t.string 'searchable_resource_type'
+    t.bigint 'searchable_resource_id'
+    t.index ['search_term'], name: 'index_searchables_on_search_term', opclass: :gin_trgm_ops, using: :gin
+    t.index %w[searchable_resource_type searchable_resource_id], name: 'index_searchables_on_searchable_resource'
   end
 
   create_table 'users', force: :cascade do |t|

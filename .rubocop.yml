@@ -17,6 +17,10 @@ require:
 Metrics/BlockLength:
   Exclude: 
     - 'db/**/*'
+Rails/CreateTableWithTimestamps:
+  Enabled: false
 Style/Documentation:
   Exclude: 
     - 'db/**/*'
+RSpec/MessageSpies:
+  Enabled: false
