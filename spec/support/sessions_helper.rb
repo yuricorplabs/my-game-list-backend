@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Helper to set auth tokens to requests
 module SessionsHelper
   extend RSpec::SharedContext
 
