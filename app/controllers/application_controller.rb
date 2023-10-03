@@ -20,6 +20,7 @@
 # devise_parameter_sanitizer.permit(:account_update, keys: %i[name]):
 # This line permits the :name attribute to be passed as a parameter when a user updates their account information.
 class ApplicationController < ActionController::API
+  include ResourceSerializer
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

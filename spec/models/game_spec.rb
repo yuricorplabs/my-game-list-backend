@@ -3,5 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Game do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:game) { build(:game) }
+
+  it { expect(game).to belong_to(:publisher) }
 end

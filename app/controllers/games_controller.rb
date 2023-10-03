@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: Game.all
+    games = Game.includes(:publisher).all
+    render json: serialize_collection(GameSerializer, games)
   end
 end

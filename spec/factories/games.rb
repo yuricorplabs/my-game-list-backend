@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :game do
-    name { 'MyString' }
-    year { 'MyString' }
-    description { 'MyText' }
+    name { Faker::Game.title }
+    year { rand(1980..2023) }
+    description { Faker::Lorem.paragraph }
     publisher
   end
 end
