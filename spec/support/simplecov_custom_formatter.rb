@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-
+# Formatter to help in CI
 class SimpleCovCustomFormatter < SimpleCov::Formatter::SimpleFormatter
   def format(result)
     percentage = result.source_files.covered_percent.to_f.round(2)

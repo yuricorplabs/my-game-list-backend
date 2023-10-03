@@ -71,4 +71,4 @@ gem 'jsonapi-serializer', '~> 2.2'
 
 gem 'database_cleaner', '~> 2.0', group: :test
 
-gem "shoulda-matchers", "~> 5.3", :group => :test
+gem 'shoulda-matchers', '~> 5.3', group: :test
