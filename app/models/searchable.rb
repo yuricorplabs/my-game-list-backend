@@ -4,4 +4,6 @@
 # it is used for games full text search
 class Searchable < ApplicationRecord
   belongs_to :searchable_resource, polymorphic: true
+
+  validates :search_term, presence: true
 end

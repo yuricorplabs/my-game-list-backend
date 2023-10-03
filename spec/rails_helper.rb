@@ -4,11 +4,14 @@
 
 require 'spec_helper'
 require_relative 'support/factory_bot' # Adjust the path as needed
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -71,3 +74,14 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+# RSpec::Sidekiq.configure do |config|
+#   # Clears all job queues before each example
+#   config.clear_all_enqueued_jobs = true # default => true
+
+#   # Whether to use terminal colours when outputting messages
+#   config.enable_terminal_colours = true # default => true
+
+#   # Warn when jobs are not enqueued to Redis but to a job array
+#   config.warn_when_jobs_not_processed_by_sidekiq = true # default => true
+# end

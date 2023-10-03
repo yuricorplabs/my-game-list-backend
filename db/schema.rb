@@ -35,13 +35,10 @@ ActiveRecord::Schema[7.0].define(version: 20_231_003_171_020) do
 
   create_table 'searchables', force: :cascade do |t|
     t.string 'search_term'
+    t.string 'searchable_resource_type'
     t.bigint 'searchable_resource_id'
-    t.string 'searchable_type'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
     t.index ['search_term'], name: 'index_searchables_on_search_term', opclass: :gin_trgm_ops, using: :gin
-    t.index %w[searchable_type searchable_resource_id],
-            name: 'index_searchables_on_searchable_type_and_searchable_resource_id'
+    t.index %w[searchable_resource_type searchable_resource_id], name: 'index_searchables_on_searchable_resource'
   end
 
   create_table 'users', force: :cascade do |t|
