@@ -13,6 +13,11 @@ AllCops:
   Exclude: 
     - 'Gemfile'
     - 'bin/**/*'
+    # '___' prefixed dirs are excluded
+    - ___*/**/*
+    # avoid "Unable to find gem panolint; is the gem installed? Gem::MissingSpecError" in all ruby versions
+    - vendor/bundle/**/*
+    - pnpm/**/*
 require:
   - rubocop-rails
   - rubocop-rspec
