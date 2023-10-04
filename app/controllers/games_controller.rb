@@ -9,6 +9,11 @@ class GamesController < ApplicationController
     render json: serialize_collection(GameSerializer, games)
   end
 
+  def show
+    game = Game.find_by(id: params[:id])
+    render json: GameSerializer.new(game).serializable_hash.dig(:data, :attributes)
+  end
+
   def search
     games = Searchable.search('Game', params[:term]).map(&:searchable_resource)
 
