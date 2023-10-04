@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Worker that indexes resources into searchable table
-class IndexSearchJob < ApplicationJob
-  queue_as :default
+# It creates an searchable entry for resource
+class IndexSearchJob
+  include Sidekiq::Job
 
   def perform(resource_id, resource_type, search_term)
     searchable = Searchable.find_or_create_by(searchable_resource_id: resource_id,

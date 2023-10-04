@@ -11,6 +11,6 @@ module IndexSearchHelper
   def dispatch_index_search
     return true unless previous_changes[indexed_attribute]
 
-    IndexSearchJob.perform_later(id, self.class.name, public_send(indexed_attribute))
+    IndexSearchJob.perform_async(id, self.class.name, public_send(indexed_attribute))
   end
 end

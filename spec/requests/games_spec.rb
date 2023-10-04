@@ -32,7 +32,6 @@ RSpec.describe 'Games' do
     let(:search_term) { games.first.name[1..3] }
 
     before do
-      index_games(games)
       get search_games_path(term: search_term), headers: auth_headers
     end
 
@@ -46,11 +45,5 @@ RSpec.describe 'Games' do
 
       it { expect(response).to have_http_status(:unauthorized) }
     end
-  end
-end
-
-def index_games(games)
-  games.each do |game|
-    IndexSearchJob.perform_now(game.id, 'Game', game.name)
   end
 end

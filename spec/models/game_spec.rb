@@ -15,7 +15,7 @@ RSpec.describe Game do
     end
 
     it 'calls worker' do
-      expect(IndexSearchJob).to receive(:perform_later)
+      expect(IndexSearchJob).to receive(:perform_async)
       game.update(name: 'New')
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe Game do
     end
 
     it 'does not calls worker' do
-      expect(IndexSearchJob).not_to receive(:perform_later)
+      expect(IndexSearchJob).not_to receive(:perform_async)
       game.update(year: '1988')
     end
   end
