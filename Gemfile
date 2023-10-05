@@ -47,8 +47,8 @@ group :development do
 end
 
 gem 'byebug', '~> 11.1', groups: %i[development test]
-gem 'factory_bot_rails', '~> 6.2', groups: %i[development test]
-gem 'faker', '~> 3.2', groups: %i[development test]
+gem 'factory_bot_rails', '~> 6.2'
+gem 'faker', '~> 3.2'
 
 gem 'rspec-rails', '~> 6.0', group: :test
 
